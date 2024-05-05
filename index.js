@@ -1,1 +1,3 @@
-const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
+const name = "john";
+const upperName = name.toUpperCase();
+console.log(upperName); // JOHN
