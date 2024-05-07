@@ -1,13 +1,18 @@
-const bubbleSortOptimized = (arr) => {
-  let swapped;
-  do {
-    swapped = false;
-    for (let i = 0; i < arr.length - 1; i++) {
-      if (arr[i] > arr[i + 1]) {
-        [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
-        swapped = true;
+function permute(nums) {
+  const result = [];
+  backtrack([]);
+  return result;
+  function backtrack(permutation) {
+    if (permutation.length === nums.length) {
+      result.push([...permutation]);
+      return;
+    }
+    for (const num of nums) {
+      if (!permutation.includes(num)) {
+        permutation.push(num);
+        backtrack(permutation);
+        permutation.pop();
       }
     }
-  } while (swapped);
-  return arr;
-};
+  }
+}
