@@ -1,14 +1,17 @@
-function rob(nums) {
-  if (nums.length === 1) return nums[0];
-  const robRange = (start, end) => {
-    let prevMax = 0;
-    let currMax = 0;
-    for (let i = start; i <= end; i++) {
-      const temp = currMax;
-      currMax = Math.max(currMax, prevMax + nums[i]);
-      prevMax = temp;
+function countAndSay(n) {
+  let result = "1";
+  for (let i = 1; i < n; i++) {
+    let temp = "";
+    let count = 1;
+    for (let j = 0; j < result.length; j++) {
+      if (result[j] === result[j + 1]) {
+        count++;
+      } else {
+        temp += count + result[j];
+        count = 1;
+      }
     }
-    return currMax;
-  };
-  return Math.max(robRange(0, nums.length - 2), robRange(1, nums.length - 1));
+    result = temp;
+  }
+  return result;
 }
